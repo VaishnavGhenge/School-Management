@@ -1,0 +1,96 @@
+{% extends "admin panel/teachers/teacher_home.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+{% if fi == 0 %}
+  <div class="jumbotron" style="margin-top: 20px">
+    <h3>Exam question paper</h3><hr>
+    <center>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+    </center>
+  <form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-4">
+        {{form.exam_id|as_crispy_field}}
+      </div>
+      <div class="col-md-4">
+        {{form.creator|as_crispy_field}}
+      </div>
+      <div class="col-md-4">
+        {{form.exam_date|as_crispy_field}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        {{form.exam_time|as_crispy_field}}
+      </div>
+      <div class="col-md-4">
+        {{form.exam_duration|as_crispy_field}}
+      </div>
+      <div class="col-md-4">
+        {{form.total_marks|as_crispy_field}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        {{form.uniquo|as_crispy_field}}
+      </div>
+    </div>
+    <center><button type="submit" name="paper" class="btn btn-primary">Create paper</button></center>
+  </form>
+  </div>
+</div>
+{% else %}
+<br>
+{% endif %}
+
+{% if fi == 1 %}
+<div class="container">
+  <div class="list-group">
+    <a id="myid" class="list-group-item list-group-item-action">
+      <h3>Create questions</h3>
+      <center>
+        {% if messages %}
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        {% endif %}
+      </center>
+    </a>
+    <a id="myid" class="list-group-item list-group-item-action">
+      <form action="" method="post" autocomplete="off">
+      {% csrf_token %}
+      {{ formset.management_form }}
+      {% for form in formset %}
+        <p><strong>Question{{form.id}}</strong></p>
+        <div class="row">  
+          <div class="col">
+            {{form.exam_subject_id|as_crispy_field}}
+          </div>
+          <div class="col">
+              {{form.question_mark|as_crispy_field}}
+          </div>
+        </div>
+        {{form.question|as_crispy_field}}    
+        {{form.answer|as_crispy_field}}
+      {% endfor %}
+        <center><button type="submit" name="question" class="btn btn-primary">Submit</button></center>
+      </form>
+    </a>  
+  </div>
+</div>
+</div>
+</div>
+{% endif %}
+
+<script>
+	var p = document.getElementById("nav-create-paper");
+	p.classList.add("active")
+</script>
+{% endblock content %}

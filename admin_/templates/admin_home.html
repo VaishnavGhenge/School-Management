@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<title>Admin Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+
+<div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:150px">
+  <h6 style="margin-left: 18px; margin-top: 20px;">Hello, {{ request.user }}!</h6>
+  <div style="margin-left: 40px;">
+    {% for s in school %}
+    <a href="{% url 'school-update' s.id %}" class="w3-bar-item w3-button"><i class="fa fa-info-circle"><h6>Info</h6></i></a>
+    {% empty %}
+      <a href="{% url 'school-details' %}" class="w3-bar-item w3-button"><i class="fa fa-info-circle"><h6>Info</h6></i></a>
+    {% endfor %}
+    <a href="{% url 'to_mail' %}" class="w3-bar-item w3-button"><i class="fa fa-envelope"><h6>Mail</h6></i></a>
+    <a href="{% url 'exam' %}" class="w3-bar-item w3-button"><i class="fa fa-newspaper-o"><h6>Exams</h6></i></a>
+    <a href="{% url 'showTeachers' %}" class="w3-bar-item w3-button"><i class="fa fa-address-card"><h6>Staff</h6></i></a>
+    <a href="{% url 'teacher-details' %}" class="w3-bar-item w3-button"><i class="fa fa-plus"><h6>Add</h6></i></a>
+    <a href="{% url 'reset_password' %}" class="w3-bar-item w3-button"><i class="fa fa-key"><h6>Change</h6></i></a>
+    <a href="{% url 'admin-logout' %}" class="w3-bar-item w3-button"><i class="fa fa-sign-out"><h6>Logout</h6></i></a>
+  </div>
+</div>
+
+<div style="margin-left:150px">
+  <div class="w3-container">
+      <h3>School Management</h3>
+      <p>Admin Panel</p><hr>
+  </div>
+</div>
+<br>
+<div class="container" style="margin-left:180px">
+  <div class="row">
+    <div class="col-md-8">
+      {% for s in school %}
+      <p>Empty :(</p>
+      {% empty %}
+        <div class="alert alert-info alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>Info!</strong> You haven't updated your school details yet, update it.
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</body>
+</html>

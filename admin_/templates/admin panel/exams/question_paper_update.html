@@ -1,0 +1,36 @@
+{%extends "admin panel/teachers/teacher_home.html" %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="jumbotron" style="margin-top: 20px">
+    <h3>Update Question</h3><hr>
+    <center>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+    </center>
+  <form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">  
+        <div class="col">
+            {{form.exam_subject_id|as_crispy_field}}
+        </div>
+        <div class="col">
+            {{form.question_mark|as_crispy_field}}
+        </div>
+    </div>
+    {{form.question|as_crispy_field}}    
+    {{form.answer|as_crispy_field}}
+    <center><button type="submit" name="paper" class="btn btn-primary">Update</button></center><br>
+    <center><a href="{% url 'question-paper-details' %}">Done</a></center>
+  </form>
+  </div>
+
+  <script>
+    var p = document.getElementById("nav-question-paper")
+    p.classList.add("active")
+  </script>
+
+  {% endblock content %}

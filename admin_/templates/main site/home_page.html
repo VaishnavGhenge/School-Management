@@ -1,0 +1,44 @@
+{% extends 'main site/main_nav.html' %}
+<!--{% load static %}-->
+{% block content2 %}
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/main site/home_page.css' %}"/>
+	<title>{% block title %}Home{% endblock %}</title>
+	  <style>
+        .hero{
+          	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6));
+        }
+      </style>
+
+<body style="background-image: url('{% static 'images/backgrounds/background.jpg' %}'); background-repeat: no-repeat; background-size: cover; height:100%; width: 100%;">
+<!--<body style = "background-repeat: no-repeat; background-size: cover; background-image: url("D:\Desert.jpg");height:500px;width:100%;">-->
+<!--<div style="background-image: url(https://cdn.pixabay.com/photo/2016/03/21/10/44/desert-1270345_960_720.jpg);background-position: center;background-repeat: no-repeat;background-size: contain;height: 500px;width: 500px;">-->
+
+		<div class="banner-title">
+			<div class="big">
+				<h1><span>Education</span> is the <span>key to success</span> in life, and <span>teachers</span><br> make a lasting impact <br>in the <span>lives of their students. </span></h1>
+			</div>
+<!--			<button type="button" class="btn">Get Started &ensp;<i class="arrow right"></i></button>-->
+		</div>
+		<div class="vertical-bar">
+			<div class="search-icon">
+				<i class="fa fa-th-list"></i>
+				<i class="fa fa-search"></i>
+			</div>
+			<div class="social-icons">
+				<i class="fa fa-facebook"></i>
+				<a href="#"><i class="fa fa-instagram"></i></a>
+				<i class="fa fa-twitter"></i>
+				<i class="fa fa-youtube"></i>
+			</div>
+		</div>
+		<div class="notifications">
+			<div class="contents">
+				<small>Lets be the part of our school and get more fun.<br></small>
+				<br><u><p><a href="">PREV</a><a href="">NEXT</a></p></u>
+			</div>
+			<div class="notification-img">
+				<img src="/static/images/backgrounds/background1.jpg">
+			</div>
+		</div>
+{% endblock content2 %}

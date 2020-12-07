@@ -1,0 +1,86 @@
+{% extends "base2.html" %}
+<!--To load the crispy_forms_tags which made forms more decorative-->
+{% load crispy_forms_tags %}
+{% block title %}School Details{% endblock title %}
+{% block content2 %}
+<center><h3 class="display-6">School Details</h3></center>
+<center>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+</center>
+<form action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!--1st row-->
+    <div class="row">
+        <div class="col-md-6">
+            {{form.username|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.logo|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--2nd row-->
+    <div class="row">
+        <div class="col-md-6">
+            {{form.name|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.email|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--3rd row-->
+    <div class="row">
+        <div class="col-md-6">
+            {{form.contact_person_name|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.contact_person_mobile_no|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--4th row-->
+    <div class="row">
+        <div class="col-md-6">
+            {{form.office_mobile_no|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.pincode|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--5th row-->
+    <div class="row">
+        <div class="col-md-4">
+            {{form.country|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.state|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.city|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--6th row-->
+    {{form.address|as_crispy_field}}
+    {{form.status|as_crispy_field}}
+    <center>
+        <!--Submit Button-->
+        <div>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-outline-primary btn-block btn-lg">Submit</button>
+        </div>
+        <br>
+        <!--Back Button to admin_home page-->
+        <div class="col-md-4">
+            <a href="{% url 'admin-home' %}">Done</a>
+        </div>
+        </div>
+    </center>
+</form>
+{% endblock content2 %}

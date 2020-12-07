@@ -1,0 +1,94 @@
+{% extends "admin panel/admin_nav.html" %}
+{% load crispy_forms_tags%}
+{% block content %}
+  <div> 
+        <h5 class="display-5" style="padding: 0px 10px; padding-top: 50px;"><strong>EXAMS</strong></h5><hr>
+        <div class="row">
+            <div class="col-md-8" style="background-color: white; padding: 20px; margin-top: 30px;">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for exam in exam_list %}
+                            <tr>
+                                <td><a href="{% url 'edit-exam' exam.id %}">{{exam.exam_name}}</a></td>
+                                <td>
+                                    <div class="dropdown">
+                                        {% if exam.status == 1 %}
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Active</button>
+                                        {% endif %}
+                                        {% if exam.status == 2 %}
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Disabled</button>
+                                        {% endif %}
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{% url 'make_active' exam.id %}">Active</a>
+                                            <a class="dropdown-item" href="{% url 'make_disable' exam.id %}">Disable</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                {% empty %}
+                                <br><br><br>
+                                <center><p><div class="alert alert-danger role="alert">
+                                   No data found !
+                                </div></p></center>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <center style="color:green;">
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Success!</strong> {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        {% endfor %}
+                    {% endif %}
+                </center>
+            </div>
+            
+            <div class="col-md-3" style="background-color: white; padding: 20px; margin: 30px;">
+                <Strong>CREATE NEW EXAM</Strong>
+                <br>
+                <br>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form1.exam_name|as_crispy_field}}     
+                    {{form1.academic_term_id|as_crispy_field}}
+                    <!--<select class="form-control select2" multiple="multiple" style="width: 100%;" required="required"></select>-->
+                    <center><button type="submit" name="create" class="btn btn-primary">Create</button></center>
+                    <br>
+                </form>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form2.exam_id|as_crispy_field}}
+                    {{form2.group_class_id|as_crispy_field}}
+                    <center><button type="submit" name="add" class="btn btn-primary">Add</button></center>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+        .dropdown-item{
+            color: rgb(102, 102, 102);
+        }
+        .dropdown-item:hover{
+            color: rgb(0, 0, 0) !important;
+        }
+    </style>
+
+    <script>
+        var p = document.getElementById("nav-create-paper");
+        p.classList.add("active")
+    </script>
+{% endblock content %}

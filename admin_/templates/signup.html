@@ -1,0 +1,43 @@
+{% extends "base2.html" %}
+<!--To load the crispy_forms_tags which made forms more decorative-->
+{% load crispy_forms_tags %}
+
+{% block title %}Teacher Signup{% endblock title %}
+{% block content2 %}
+<center><h3 class="display-6">Register Teacher</h3></center>
+<center>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+</center>
+    <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+        <center>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+                {{form.username|as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{form.password1|as_crispy_field}}
+            </div>
+            <div class="col-md-6">
+                {{form.password2|as_crispy_field}}
+            </div>
+        </div>
+        <br>
+        <div>
+        <div class="col-md-7">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+        </div>
+        <br>
+        <div class="col-md-6">
+            <a href="{% url 'admin-home' %}">Done</a>
+        </div>
+        </div>
+        </center>
+    </form>
+{% endblock content2 %}

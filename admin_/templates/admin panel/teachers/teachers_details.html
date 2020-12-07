@@ -1,0 +1,95 @@
+{% extends "admin panel/admin_nav.html" %}
+{% block title %} Teachers Details{% endblock title %}
+{% block content %}
+
+<center>
+    <br>
+    <h2 style="margin-top: 20px;">Teacher Register</h2>
+    <p>To search Teacher in the table please try to enter teacher related information:</p>
+    <div class="container">
+        <br>
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <br>
+   </div>
+</center>
+<br>
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Sr No.</th>
+                <!--<th>Username</th>
+                <th>Password</th>
+                <th>School</th>-->
+                <th>Image</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Qualification</th>
+                <th>Experience</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Pincode</th>
+                <th>Last Login</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <!--<th>Status</th>-->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            {% for employee in teachers_details %}
+                <tr>
+                    <td>{{ employee.id }}</td>
+                    <!--<td>{{employee.username}}</td>
+                    <td>{{employee.password}}</td>
+                    <td>{{employee.school_id}}</td>-->
+                    <td><img src={{employee.image.url}} class="rounded-circle" style="width: 75px; height: 75px;"></td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.mobile_no}}</td>
+                    <td>{{employee.qualification}}</td>
+                    <td>{{employee.experience}}</td>
+                    <td>{{employee.country}}</td>
+                    <td>{{employee.state}}</td>
+                    <td>{{employee.city}}</td>
+                    <td>{{employee.address}}</td>
+                    <td>{{employee.pincode}}</td>
+                    <td>{{employee.last_login}}</td>
+                    <td>{{employee.date_created}}</td>
+                    <td>{{employee.date_updated}}</td>
+                    <!--<td>{{employee.status}}</td>-->
+                    <td><a href="{% url 'teacher-update' employee.id %}" class="btn btn-primary">Update</a></td>
+                        <!--<form action="#" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="button" class="btn btn-secondary">Delete</button>
+                        </form>
+                    </td>-->
+                </tr>
+                {% empty %}
+                    <center><p>Empty :(</p></center>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    
+
+    var c = document.getElementById("nav-teacher");
+    c.classList.add("active")
+
+</script>
+
+
+{% endblock content %}

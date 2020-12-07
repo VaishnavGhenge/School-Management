@@ -1,0 +1,131 @@
+{% extends "admin panel/admin_nav.html" %}
+<!--To load the crispy_forms_tags which made forms more decorative-->
+{% load crispy_forms_tags %}
+
+{% block title %} Teacher Signup {% endblock title %}
+{% block content %}
+
+<div class="col-md-10 offset-md-1 mt-5">
+    <div class="jumbotron" style="z-index: -2 !important;">
+        <h3 class="display-6">Teacher Signup</h3>
+        <hr class="my-4">
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<center>
+    {% if messages%}
+    {%for message in messages%}
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Failed!</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {%endif%}
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS%}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {%endif%}
+    {%endfor%}
+    {%endif%}
+</center>
+    <!--1st row-->
+    <div class="row">
+        <div class="col-md-6">
+            {{form.username|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.school_id|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--2nd row-->
+    <div class="row">
+        <div class="col-md-6">
+            {{form.image|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.name|as_crispy_field}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{form.email|as_crispy_field}}
+        </div>
+    </div>
+    <!--3rd row-->
+    <div class="row">
+        <div class="col-md-6">
+            {{form.mobile_no|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.qualification|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--4th row-->
+    <div class="row">
+        <div class="col-md-6">
+            {{form.experience|as_crispy_field}}
+        </div>
+        <div class="col-md-6">
+            {{form.pincode|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--5th row-->
+    <div class="row">
+        <div class="col-md-4">
+            {{form.country|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.state|as_crispy_field}}
+        </div>
+        <div class="col-md-4">
+            {{form.city|as_crispy_field}}
+        </div>
+    </div>
+
+    <!--6th row-->
+    {{form.address|as_crispy_field}}
+
+    <!--7th row-->
+    <div class="row">
+        <div class="col-md-4">
+            {{form.status|as_crispy_field}}
+        </div>
+    </div>
+
+    <center>
+        <!--Submit Button-->
+        <br>
+        <div>
+        <div class="col-md-7">
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+        </div>
+        <br>
+        <!--Back Button to admin_home page-->
+        <div class="col-md-4">
+            <a href="{% url 'admin-home' %}">Back</a>
+        </div>
+        </div>
+    </center>
+</form>
+</div>
+</div>
+
+
+<script>
+
+    var c = document.getElementById("nav-teacher");
+    c.classList.add("active")
+
+</script>
+
+{% endblock content %}
+
+    

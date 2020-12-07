@@ -1,0 +1,45 @@
+{% extends 'main site/main_nav.html' %}
+<!--{% load static %}-->
+{% block content2 %}
+
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/main site/contact_us.css' %}"/>
+	<title>{% block title %}Contact Us{% endblock %}</title>
+
+      <style>
+        .hero{
+          	background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.5));
+        }
+      </style>
+
+<body style="background-image: url('{% static 'images/backgrounds/contact_us1.jpg' %}'); background-repeat: no-repeat; background-size: cover; height:100%; width: 100%;">
+
+        <section id="contact-section">
+           <div class="container">
+           	 <h2>Contact Us</h2><br>
+             <span class="border1"></span>
+              <p>Email us and keep upto date with our latest news</p>
+             <div class="contact-form">
+               <div>
+                 <i class="fa fa-map-marker"></i><span class="form-info">  Somewhere in the world</span><br>
+                 <i class="fa fa-phone" > </i><span class="form-info">  +91 1234567890</span><br>
+                 <i class="fa fa-envelope"></i><span class="form-info">  OurSchool@Gmail.com</span>
+               </div>
+
+
+                <form action="" method="POST">
+                    <br>
+                {% csrf_token %}
+                {{ form.as_p }}
+                  <br><br>
+
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <center><button class="submit">Send Message</button></center>
+                    <br><br>
+                </form>
+             </div>
+           </div>
+
+        </section>
+
+</body>
+{% endblock content2 %}

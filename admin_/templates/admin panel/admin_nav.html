@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+          type="text/css">
+          <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/panels/admin_nav.css' %}"/>
+    <title>Dashboard</title>
+</head>
+<body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(42, 43, 58);">
+    <a class="navbar-brand" href="#">E-School</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <br>
+            <li class="nav-item">
+                <a class="nav-link " id="nav-dashboard" href="{% url 'dashboard' %}" style="color: rgb(169, 169, 184); transition: all .6s ease-in-out;"><i class="fa fa-tachometer"
+                                                                                          aria-hidden="true" ></i>Dashboard<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            
+            <div class="dropdown">
+                <button class="dropbtn" style="padding-right: 40px !important;" id="nav-school"><i class="fa fa-graduation-cap"
+                  aria-hidden="true"></i>School</button>
+                <div class="dropdown-content" style="margin-top: 2px;">
+                  <a id="mn1" href="{% url 'school-detailsn' 1 %}"><i class="fa fa-user"
+                      aria-hidden="true"></i>Info</a>
+                </div>
+              </div>
+
+            <div class="dropdown">
+              <button class="dropbtn" id="nav-teacher"><i class="fa fa-users"
+                aria-hidden="true"></i>Teachers</button>
+              <div class="dropdown-content">
+                <a id="mn1" href="{% url 'teachers-details' %}"><i class="fa fa-user"
+                    aria-hidden="true"></i>Details</a>
+                <a href="{% url 'teacher-details-signup' %}"><i class="fa fa-pencil-square-o"
+                    aria-hidden="true"></i>Add Teacher</a>
+              </div>
+            </div>
+
+           
+
+            <li class="nav-item">
+                <a class="nav-link" id="nav-exam" href="{% url 'exam' %}" style="color: rgb(169, 169, 184); transition: all .6s ease-in-out;"><i class="fa fa-pencil-square-o"
+                                                                                   aria-hidden="true"></i>Exam<span
+                        class="sr-only">(current)</span></a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" id="nav-mail" href="{% url 'inbox' %}" style="color: rgb(169, 169, 184); transition: all .6s ease-in-out;"><i class="fa fa-envelope"
+                                                                                   aria-hidden="true"></i>Inbox<span
+                        class="sr-only">(current)</span></a>
+            </li>
+
+            
+
+
+            <li class="nav-item">
+                <a class="nav-link"  href="{% url 'admin-logout' %}" style="color: rgb(169, 169, 184); transition: all .6s ease-in-out;"><i class="fa fa-sign-out"
+                                                                                   aria-hidden="true"></i>Logout<span
+                        class="sr-only">(current)</span></a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+        {% block content %}
+        {% endblock content %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% extends "admin panel/admin_nav.html" %}
+
+{% block content %}
+
+        <br><br>
+        <div class="alert alert-success" role="alert">
+            <strong>Welcome </strong> to the Inbox
+        </div>
+       {% for mail in mails %}
+       <div class="alert alert-primary alert-dismissible fade show">
+        <strong>{{mail.Name}}</strong>
+        <br>
+        {{mail.msg}} 
+        <br><br>
+        {% for school in schools %}
+        <a href="mailto:{{mail.email}}?subject=Mail from {{school.name}}&body=Dear {{mail.Name}}" class="alert-link" 
+        data-toggle="tooltip" data-placement="bottom" title="Reply to this mail">Reply</a>
+        {% endfor %}
+        <form action="{% url 'delete_mail' mail.id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn">
+                <i class="fa fa-trash-o text-danger" data-toggle="tooltip" data-placement="right" title="delete mail"></i>
+            </button>
+        </form>
+       </div>
+       {% empty %}
+            <center><p><div class="alert alert-danger role="alert">
+               No data found !
+              </div></p></center>
+       {% endfor %}
+       
+   </div>
+   <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+    </script>
+
+<script>
+
+    var c = document.getElementById("nav-mail");
+    c.classList.add("active")
+
+</script>
+
+
+{% endblock content %}

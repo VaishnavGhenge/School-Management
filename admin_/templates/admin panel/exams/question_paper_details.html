@@ -1,0 +1,72 @@
+{% extends "admin panel/teachers/teacher_home.html" %}
+{% block title %}Question Papers{% endblock title %}
+
+{% block content %}
+<center>
+    <br>
+    <h2 style="margin-top: 20px;">Question Papers</h2>
+    <p>To search Questions by paper in the table please try to enter paper uniquo:</p>
+    <div class="container">
+        <br>
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+   </div>
+</center>
+<br>
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Sr No.</th>
+                <th>uniquo</th>
+                <th>Marks</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            {% for question in question_paper_details %}
+                <tr>
+                    <td>{{question.id}}</td>
+                    <td>{{question.exam_subject_id}}</td>
+                    <td>{{question.question_mark}}</td>
+                    <td>{{question.question}}</td>
+                    <td>{{question.answer}}</td>
+                    <td>{{question.date_created}}</td>
+                    <td>{{question.date_updated}}</td>
+                    <td>{{question.status}}</td>
+                    <td><a href="{% url 'question-paper-update' question.exam_subject_id question.id %}" class="btn btn-primary">Update</a></td>
+                </tr>
+                {% empty %}
+                    <center><p>
+
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                           No data found!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                        </p></center>
+            {% endfor %}
+            <br>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+
+    var p = document.getElementById("nav-question-paper")
+    p.classList.add("active")
+    </script>
+
+{% endblock content %}

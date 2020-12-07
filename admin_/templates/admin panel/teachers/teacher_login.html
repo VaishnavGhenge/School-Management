@@ -1,0 +1,41 @@
+{% extends "LoginBase.html" %}
+<!--To load the crispy_forms_tags which made forms more decorative-->
+
+{% block title %}Staff Login{% endblock title %}
+{% block content2 %}
+<center><h3 class="display-6">Login</h3></center>
+<br>
+<center>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+</center>
+<br>
+<form action="" method="POST">
+    <center>
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="col-md-7">
+            <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-7">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+        </div>
+    </div>
+    
+    <div>
+    <div class="col-md-7">
+        <button type="Login" class="btn btn-primary btn-block btn-lg">Login</button>
+    </div>
+    <br>
+    <div class="col-md-8">
+        <a href="{% url 'reset_password' %}">forgot your password? click here</a>
+    </div>
+    </div>
+    </center>
+</form>
+{% endblock content2 %}

@@ -1,0 +1,13 @@
+{% extends "admin panel/admin_nav.html" %}
+
+{% block content %}
+<br>
+<br>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% for s in school %}
+<a href="{% url 'school-update' s.id %}" class="w3-bar-item w3-button"><i class="fa fa-info-circle"><h6>Info</h6></i></a>
+{% empty %}
+  <a href="{% url 'school-details' %}" class="w3-bar-item w3-button"><i class="fa fa-info-circle"><h6>Info</h6></i></a>
+{% endfor %}
+
+{% endblock content %}

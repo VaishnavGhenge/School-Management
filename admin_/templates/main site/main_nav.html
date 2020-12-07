@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" media="all" href="{% static 'css/main site/main_nav.css' %}"/>
+
+	<title>{% block title %}Base{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+
+	<div class="hero">
+		<div class="nav-bar">
+			<div class="nav-logo">
+				<img src="">
+			</div>
+			<div class="nav-links" id="nav-links">
+				<i class="fa fa-close" onclick="closeMenu()"></i>
+				<ul>
+			  	  <a href="/"><li>Home</li></a>
+ 				  <a href="/contact_us"><li>Contact</li></a>
+ 				  <a href="/about_us"><li>About</li></a>
+ 				  <a href="/disclaimer"><li>Disclaimer</li></a>
+ 				  <div class="dropdown">
+    				<button class="dropbtn">Accounts
+      					<i class="fa fa-caret-down"></i>
+   					 </button>
+    					<div class="dropdown-content">
+     						 <a href="{% url 'staff-login' %}">Staff Login</a>
+     						 <a href="{% url 'admin-login' %}">Admin Login</a>
+    					</div>
+ 				  </div>
+
+			</div>
+			<i class="fa fa-bars" onclick="showMenu()"></i>
+
+		</div>
+		{% block content2 %}
+		{% endblock content2 %}
+
+
+
+	<script>
+		var show = document.getElementById("nav-links");
+		 function showMenu(){
+			show.style.right = "0";
+		 }
+		 function closeMenu(){
+			show.style.right = "-200px";
+		 }
+	</script>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,21 @@
+{% extends 'admin panel/admin_nav.html' %}
+{% block content %}
+{% load static %}
+<br><br>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Warning!</strong> No data found!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+<script>
+    var p = document.getElementById("nav-dashboard");
+    p.classList.add("active")
+</script>
+
+<style>
+
+
+{% endblock content %}
+

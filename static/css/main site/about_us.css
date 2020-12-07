@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.team-section{
+    overflow: hidden;
+    text-align: center;
+    padding: 2px;
+}
+.team-section h1{
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: yellow;
+}
+.border1{
+    display: block;
+    margin: auto;
+    width: 160px;
+    height:3px;
+    background: #3498db;
+    margin-bottom:40px;
+    }
+
+.border{
+    display: block;
+    margin: auto;
+    width: 160px;
+    height:3px;
+    background: #3498db;
+    margin-bottom:40px;
+}
+
+.ps{
+    margin-bottom: 30px;
+}
+.ps a{
+    display: inline-block;
+    margin: 0 30px;
+    /*width: 300px;
+    height: 400px;*/
+    margin-left: 50px;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+.ps img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.selection{
+    width: 600px;
+    margin: auto;
+    font-size: 20px;
+    text-align: justify;
+    height: 0;
+    overflow: hidden;
+}
+.selection:target{
+    height: auto;
+    color: yellow;
+
+}
+.name{
+    display: block;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+@media (max-width: 700px){
+    .team-section h1{
+        font-size: 30px;
+    }
+    .ps img{
+    height: 110px;
+    width: 100px;
+    }
+    .name{
+    margin-right: 200px;
+    font-size: 20px;
+    }
+    .ps{
+    margin-bottom: 10px;
+    }
+    .ps a{
+    margin-left: 50px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    }
+    .border{
+    display: block;
+    align: center;
+    margin: auto;
+    width: 100px;
+    height:3px;
+    background: #3498db;
+    margin-right: 345px;
+    margin-top: -15px;
+    margin-bottom:40px;
+    }
+     .border1{
+    display: block;
+    align: center;
+    margin: auto;
+    width: 100px;
+    height:3px;
+    background: #3498db;
+    margin-right: 137px;
+    margin-top: -5px;
+    margin-bottom:55px;
+    }
+
+}

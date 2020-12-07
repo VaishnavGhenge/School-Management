@@ -1,0 +1,62 @@
+{% extends 'main site/main_nav.html' %}
+<!--{% load static %}-->
+{% block content2 %}
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/main site/about_us.css' %}"/>
+	<title>{% block title %}About Us{% endblock %}</title>
+
+      <style>
+        .hero{
+          	background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7));
+        }
+      </style>
+
+<body style="background-image: url('{% static 'images/team members/about_us.jpg'%}'); background-repeat: no-repeat; background-size: cover; height:100%; width: 100%;">
+<!--<body>-->
+  <div class="team-section">
+    <h1>Our Team</h1>
+    <span class="border1"></span>
+    <div class="ps">
+
+      <a href="#p1"><img src='/static/images/team members/team-1.jpg' alt=""></a>
+      <a href="#p2"><img src='/static/images/team members/team-2-2.jpg' alt=""></a>
+      <a href="#p3"><img src='/static/images/team members/team-3-3.jpg' alt=""></a>
+      <br><a href="#p4"><img src='/static/images/team members/team-4-4.jpg' alt=""></a>
+      <a href="#p5"><img src='/static/images/team members/team-5-5.jpg' alt=""></a>
+      <a href="#p6"><img src='/static/images/team members/team-6-6.jpg' alt=""></a>
+
+    </div>
+
+    <div class="selection" id="p1">
+        <span class="name">Jaydeep Gedam</span>
+        <span class="border"></span>
+
+    </div>
+    <div class="selection" id="p2">
+        <span class="name">Vaishnav Ghenge</span>
+        <span class="border"></span>
+
+    </div>
+    <div class="selection" id="p3">
+        <span class="name">Shanatanu Barad</span>
+        <span class="border"></span>
+
+    </div>
+    <div class="selection" id="p4">
+        <span class="name">Parth Bamnote</span>
+        <span class="border"></span>
+
+    </div>
+    <div class="selection" id="p5">
+        <span class="name">Kaustubh Bhule</span>
+        <span class="border"></span>
+
+    </div>
+    <div class="selection" id="p6">
+        <span class="name">Purval Dhumale</span>
+        <span class="border"></span>
+    </div>
+  </div>
+
+{% endblock content2 %}
+<!--      <br><a href="#"><img src='/static/team/team-4.jpeg' style="margin-right: 470px; margin-left: 0;" alt=""></a>-->
+<!--      <a href="#"><img src='/static/team/team-5.jpeg' style="margin-right: 2px; margin-left: 0;" alt=""></a>-->
