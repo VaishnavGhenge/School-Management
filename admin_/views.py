@@ -73,7 +73,7 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 #admin-Logout
-@login_required(login_url='staff-login')
+@login_required(login_url='admin-login')
 def logoutAdmin(request):
     logout(request)
     return redirect('admin-login')
